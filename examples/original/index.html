@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FCSAPI Chart - Full Configuration Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: Arial, sans-serif;
+            background: #0d0e14;
+            color: #d1d4dc;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../../src/fcsapi-chart.css">
+</head>
+<body>
+    <div id="fcs_chartparent">
+        <div id="fcs_chart"></div>
+    </div>
+
+    <script src="../../src/fcsapi-chart.js"></script>
+    <script>
+        function setMobileHeight() {
+            const vh = window.innerHeight;
+            document.getElementById('fcs_chartparent').style.height = vh + 'px';
+        }
+        setMobileHeight();
+        window.addEventListener('resize', setMobileHeight);
+
+        const chart = new FCSAPIChart({
+            container: document.getElementById('fcs_chart'),
+            parentid: 'fcs_chartparent',
+            symbol: 'BINANCE:BTCUSDT',
+            period: '1H',
+            theme: 'dark',
+            defaultChartType: 'candlestick',
+            enableSidebar: true,
+            enableToolbar: true,
+            enableRangeSelector: true
+        });
+    </script>
+</body>
+</html>
